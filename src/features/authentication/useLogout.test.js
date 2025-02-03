@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals';
-import { renderHook } from '@testing-library/react-hooks';
+// import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useLogout } from './useLogout';
