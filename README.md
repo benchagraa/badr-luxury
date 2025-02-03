@@ -7,13 +7,13 @@ Canva for logo.
 
 What's been used in this project:
 
-- Smooth UX design
-- Used design patterns like Render Pros, Higher Order Components and Error Boundary.
-- Used React Query.
-- Used Jest to test components, especially custom hooks (where most of the logic is)
+- Smooth UX design (with Dark mode)
+- Design patterns like Render Pros, Higher Order Components and Error Boundary.
+- React Query.
+- Jest to test components, especially custom hooks (where most of the logic is)
 - Clean code.
 - Separate the presentation logic from the business logic.
-- Used Recharts for charts.
+- Recharts for charts.
 
 For CI:
   - Used Azure DevOps CI to create a build/test pipeline.
