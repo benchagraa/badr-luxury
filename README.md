@@ -16,7 +16,9 @@ What's been used in this project:
 - Recharts for charts.
 
 For CI:
-  - Used Azure DevOps CI to create a build/test pipeline.
+  - Used Azure DevOps CI to create a build/test pipeline (see .yaml file).
+    ![image](https://github.com/user-attachments/assets/99b4bacb-8539-4ed6-99cb-84976aee73d2)
+
 
 
 Screenshots of the application ( self-explanatory :smiley: ):
@@ -30,17 +32,6 @@ Screenshots of the application ( self-explanatory :smiley: ):
   - ![image](https://github.com/user-attachments/assets/e0026a04-bc52-4982-ad3b-d50eb5d9b4b8)
   - ![image](https://github.com/user-attachments/assets/461f22a3-3a5d-47c2-83cf-9ce27a715fe0)
   - Light mode. ![image](https://github.com/user-attachments/assets/2b24277e-b32b-4e21-be56-2515b0438d98)
-
-
-
-
-
-
-
-
-
-
-
 
 To test it out, it's pretty straightforward:
 
