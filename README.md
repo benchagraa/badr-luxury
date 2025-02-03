@@ -1,3 +1,5 @@
+![logo-light](https://github.com/user-attachments/assets/086e392d-2176-4981-81d1-629a4c4958e9)
+
 A personal hotel/resort react project, unit tested with Jest. 
 Used React Query and applied well-off design patterns. 
 For the database I used Supabase (greatest Firebase alternative). 
@@ -27,4 +29,10 @@ npm run dev
 
 ```
 http://localhost:5173
+```
+
+<p>5. Run tests </p>
+
+```
+npm test
 ```
