@@ -5,6 +5,15 @@ Used React Query and applied well-off design patterns.
 For the database I used Supabase (greatest Firebase alternative). 
 Canva for logo.
 
+What's been used in this project:
+
+- Smooth UX design
+- Used design patterns like Render Pros, Higher Order Components and Error Boundary.
+- Used React Query.
+- Used Jest to test components, especially custom hooks (where most of the logic is)
+- Clean code.
+- Separate the presentation logic from the business logic.
+
 To test it out, it's pretty straightforward:
 
 <p>1. Clone the repository</p>
