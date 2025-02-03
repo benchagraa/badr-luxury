@@ -41,7 +41,7 @@ npm run dev
 <p>4. Access the application at</p>
 
 ```
-http://localhost:5173
+http://localhost:5173/dashboard?last=10
 ```
 <p>4. Log In: </p>
 
