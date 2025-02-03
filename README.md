@@ -15,6 +15,9 @@ What's been used in this project:
 - Separate the presentation logic from the business logic.
 - Used Recharts for charts.
 
+For CI:
+  - Used Azure DevOps CI to create a build/test pipeline.
+
 To test it out, it's pretty straightforward:
 
 <p>1. Clone the repository</p>
@@ -39,6 +42,12 @@ npm run dev
 
 ```
 http://localhost:5173
+```
+<p>4. Log In: </p>
+
+```
+Email: bnp@example.com
+Password: test123@
 ```
 
 <p>5. Run tests </p>
