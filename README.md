@@ -13,6 +13,7 @@ What's been used in this project:
 - Used Jest to test components, especially custom hooks (where most of the logic is)
 - Clean code.
 - Separate the presentation logic from the business logic.
+- Used Recharts for charts.
 
 To test it out, it's pretty straightforward:
 
