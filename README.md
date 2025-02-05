@@ -7,13 +7,32 @@ Canva for logo.
 
 What's been used in this project:
 
-- Smooth UX design
-- Used design patterns like Render Pros, Higher Order Components and Error Boundary.
-- Used React Query.
-- Used Jest to test components, especially custom hooks (where most of the logic is)
+- Smooth UX design (with Dark mode).
+- Design patterns like Render Props, Higher Order Components and Error Boundary and more.
+- React Query.
+- Jest to test components and custom hooks (where most of the logic is).
 - Clean code.
 - Separate the presentation logic from the business logic.
-- Used Recharts for charts.
+- Recharts for charts.
+- Styled components library.
+
+For CI:
+  - Used Azure DevOps CI to create a build/test pipeline (see .yaml file).
+    ![image](https://github.com/user-attachments/assets/99b4bacb-8539-4ed6-99cb-84976aee73d2)
+
+
+
+Screenshots of the application ( self-explanatory :smiley: ):
+  - Dashboard that shows bookings, sales, etc.. with date filters and charts that track sales and duration summary. ![image](https://github.com/user-attachments/assets/4399c3a4-228e-4f3e-9106-3392db78b9ff) ![image](https://github.com/user-attachments/assets/51a12a9a-84b2-4c96-88dd-1e7d1e2139f0)
+  - ![image](https://github.com/user-attachments/assets/04e3a970-32fa-4de9-b2b8-c0788ad4996c)
+  - ![image](https://github.com/user-attachments/assets/707029a4-af31-4c03-b612-c014a590765c)
+  - ![image](https://github.com/user-attachments/assets/0e041b90-ebe6-4efe-b19b-5a2d2906b497)
+  - ![image](https://github.com/user-attachments/assets/ad6436f2-34ce-4713-8daf-40278f7cb2a9)
+  - ![image](https://github.com/user-attachments/assets/ab0701ac-47ed-4352-a7d7-c908b8277821)
+  - ![image](https://github.com/user-attachments/assets/0a786df8-ce3b-4b0f-8210-4b616df72675)
+  - ![image](https://github.com/user-attachments/assets/e0026a04-bc52-4982-ad3b-d50eb5d9b4b8)
+  - ![image](https://github.com/user-attachments/assets/461f22a3-3a5d-47c2-83cf-9ce27a715fe0)
+  - Light mode. ![image](https://github.com/user-attachments/assets/2b24277e-b32b-4e21-be56-2515b0438d98)
 
 To test it out, it's pretty straightforward:
 
@@ -38,7 +57,13 @@ npm run dev
 <p>4. Access the application at</p>
 
 ```
-http://localhost:5173
+http://localhost:5173/dashboard?last=10
+```
+<p>4. Log In: </p>
+
+```
+Email: bnp@example.com
+Password: test123@
 ```
 
 <p>5. Run tests </p>
