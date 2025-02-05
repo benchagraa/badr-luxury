@@ -1,9 +1,30 @@
 ![logo-light](https://github.com/user-attachments/assets/086e392d-2176-4981-81d1-629a4c4958e9)
 
-A personal hotel/resort react project, unit tested with Jest. 
+A personal hotel/resort react project to manage bookings, unit tested with Jest. 
 Used React Query and applied well-off design patterns. 
 For the database I used Supabase (greatest Firebase alternative). 
 Canva for logo.
+
+Before anything, the project doesn't have a commit history as I've been working on it locally, but it's pretty straightforward to understand, below is an overview of the project architecture/structure :smiley:
+## Project Structure
+
+#### `Project Structure`
+- **`/context`**: Contains React context providers for global state management
+- **`data`**: Mock data (cabins, bookings..)
+  - **`cabins`**
+- **`/src/features`**:
+  - **`/src/features/authentication`**: Handles user authentication (login, signup, etc.)
+  - **`/src/features/bookings`**: Manages booking-related functionality (reservations, detail, etc.)
+  - **`/src/features/cabins`**: Handles cabin-related functionality (listing, details, etc.)
+  - **`/src/features/check-in-out`**: Manages check-in and check-out processes
+  - **`/src/features/dashboard`**: Contains the main dashboard UI and logic
+  - **`/src/features/settings`**: Handles user settings and preferences
+- **`/hooks`**: Custom React hooks for reusable logic
+- **`/pages`**: All application pages
+- **`/services`**: Supabase API services (backend)
+- **`/styles`**: Global styles
+- **`/ui`**: Mini library of re-usable UI components (buttons, modals, etc.)
+- **`/utils`**: Helper functions
 
 What's been used in this project:
 
