@@ -1,12 +1,11 @@
 import { jest } from '@jest/globals';
 import '@testing-library/jest-dom';
 import { waitFor, renderHook } from '@testing-library/react';
-// import { renderHook, waitFor } from '@testing-library/react-hooks';
+
 import { useQuery } from '@tanstack/react-query';
 import { useCabins } from './useCabins';
 import { getCabins } from '../../services/apiCabins';
 
-// Mock dependencies
 jest.mock('@tanstack/react-query', () => ({
   useQuery: jest.fn(),
 }));
@@ -17,7 +16,6 @@ jest.mock('../../services/apiCabins', () => ({
 
 describe('useCabins', () => {
   beforeEach(() => {
-    // Reset mocks before each test
     jest.clearAllMocks();
   });
 
@@ -27,7 +25,6 @@ describe('useCabins', () => {
       { id: 2, name: 'Cabin 2' },
     ];
 
-    // Mock useQuery to return the cabin data
     useQuery.mockImplementation(({ queryKey, queryFn }) => {
       expect(queryKey).toEqual(['cabins']);
       expect(queryFn).toBeDefined();
@@ -38,12 +35,10 @@ describe('useCabins', () => {
       };
     });
 
-    // Mock getCabins to return the mock cabins
     getCabins.mockResolvedValue(mockCabins);
 
     const { result } = renderHook(() => useCabins());
 
-    // Wait for the hook to resolve
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
       expect(result.current.cabins).toEqual(mockCabins);
@@ -52,7 +47,6 @@ describe('useCabins', () => {
   });
 
   test('handles loading state while fetching data', () => {
-    // Mock useQuery to return the loading state
     useQuery.mockImplementation(() => ({
       isLoading: true,
       data: undefined,
@@ -61,7 +55,6 @@ describe('useCabins', () => {
 
     const { result } = renderHook(() => useCabins());
 
-    // Verify loading state
     expect(result.current.isLoading).toBe(true);
     expect(result.current.cabins).toBeUndefined();
     expect(result.current.error).toBeNull();
@@ -70,19 +63,16 @@ describe('useCabins', () => {
   test('handles errors when the API call fails', async () => {
     const mockError = new Error('Failed to fetch cabins');
 
-    // Mock useQuery to return an error
     useQuery.mockImplementation(() => ({
       isLoading: false,
       data: undefined,
       error: mockError,
     }));
 
-    // Mock getCabins to throw an error
     getCabins.mockRejectedValue(mockError);
 
     const { result } = renderHook(() => useCabins());
 
-    // Wait for the hook to resolve
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
       expect(result.current.cabins).toBeUndefined();

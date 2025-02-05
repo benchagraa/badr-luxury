@@ -1,12 +1,10 @@
 import { jest } from '@jest/globals';
 import '@testing-library/jest-dom';
-// import { renderHook } from '@testing-library/react-hooks';
-import { waitFor, renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { useBookings } from './useBookings';
 
-// Mock dependencies
 jest.mock('@tanstack/react-query', () => ({
   useQuery: jest.fn(),
   useQueryClient: jest.fn(),
@@ -24,10 +22,8 @@ describe('useBookings', () => {
   let mockGetBookings, mockPrefetchQuery, mockSearchParams;
 
   beforeEach(() => {
-    // Reset mocks before each test
     jest.clearAllMocks();
 
-    // Mock useQuery
     useQuery.mockImplementation(({ queryKey, queryFn }) => {
       return {
         isLoading: false,
@@ -36,13 +32,11 @@ describe('useBookings', () => {
       };
     });
 
-    // Mock useQueryClient
     mockPrefetchQuery = jest.fn();
     useQueryClient.mockReturnValue({
       prefetchQuery: mockPrefetchQuery,
     });
 
-    // Mock useSearchParams
     mockSearchParams = new URLSearchParams();
     useSearchParams.mockReturnValue([mockSearchParams]);
   });
@@ -50,7 +44,6 @@ describe('useBookings', () => {
   test('fetches bookings data with the correct filter, sort, and pagination parameters', () => {
     const { result } = renderHook(() => useBookings());
 
-    // Verify the default query key and parameters
     expect(useQuery).toHaveBeenCalledWith({
       queryKey: [
         'bookings',
@@ -66,7 +59,6 @@ describe('useBookings', () => {
     mockSearchParams.set('status', 'checked-in');
     const { result } = renderHook(() => useBookings());
 
-    // Verify the query key includes the filter
     expect(useQuery).toHaveBeenCalledWith({
       queryKey: [
         'bookings',
@@ -82,7 +74,6 @@ describe('useBookings', () => {
     mockSearchParams.set('sortBy', 'totalPrice-asc');
     const { result } = renderHook(() => useBookings());
 
-    // Verify the query key includes the sortBy parameter
     expect(useQuery).toHaveBeenCalledWith({
       queryKey: [
         'bookings',
@@ -98,7 +89,6 @@ describe('useBookings', () => {
     mockSearchParams.set('page', '2');
     const { result } = renderHook(() => useBookings());
 
-    // Verify the query key includes the page parameter
     expect(useQuery).toHaveBeenCalledWith({
       queryKey: [
         'bookings',
@@ -111,7 +101,6 @@ describe('useBookings', () => {
   });
 
   test('handles loading and error states', () => {
-    // Mock useQuery to return loading and error states
     useQuery.mockImplementation(({ queryKey, queryFn }) => {
       return {
         isLoading: true,
@@ -122,7 +111,6 @@ describe('useBookings', () => {
 
     const { result } = renderHook(() => useBookings());
 
-    // Verify loading and error states
     expect(result.current.isLoading).toBe(true);
     expect(result.current.error).toEqual(new Error('Failed to fetch bookings'));
     expect(result.current.bookings).toBeUndefined();

@@ -5,7 +5,6 @@ import { DarkModeProvider, useDarkMode } from './DarkModeContext';
 import { useEffect } from 'react';
 import '@testing-library/jest-dom';
 
-// Mock localStorage
 const localStorageMock = (() => {
   let store = {};
   return {
@@ -17,7 +16,6 @@ const localStorageMock = (() => {
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
-// Mock window.matchMedia
 window.matchMedia = jest.fn().mockImplementation((query) => ({
   matches: query === '(prefers-color-scheme: dark)',
   addListener: jest.fn(),
@@ -79,7 +77,6 @@ describe('DarkModeContext', () => {
       </DarkModeProvider>
     );
 
-    // Initial state
     expect(localStorage.getItem('isDarkMode')).toBe('true');
 
     await userEvent.click(screen.getByRole('button', { name: 'Toggle' }));
@@ -103,7 +100,6 @@ describe('DarkModeContext', () => {
   });
 
   test('handles initial false state when system preference is light', () => {
-    // Override matchMedia mock for this test
     window.matchMedia = jest.fn().mockImplementation((query) => ({
       matches: false,
       addListener: jest.fn(),

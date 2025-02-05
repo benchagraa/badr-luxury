@@ -4,14 +4,12 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import LoginForm from './LoginForm';
 import { useLogin } from './useLogin';
 
-// Mock the useLogin hook
 jest.mock('./useLogin');
 
 describe('LoginForm Component', () => {
   let mockLogin;
 
   beforeEach(() => {
-    // Mock the login function and isLoading state
     mockLogin = jest.fn();
     useLogin.mockReturnValue({ login: mockLogin, isLoading: false });
   });
@@ -74,7 +72,6 @@ describe('LoginForm Component', () => {
     fireEvent.change(emailInput, { target: { value: 'user@example.com' } });
     fireEvent.change(passwordInput, { target: { value: 'securepassword' } });
 
-    // Simulate successful login completion
     mockLogin.mockImplementation((_data, { onSettled }) => onSettled());
 
     fireEvent.click(submitButton);

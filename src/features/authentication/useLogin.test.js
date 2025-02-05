@@ -1,13 +1,11 @@
 import { jest } from '@jest/globals';
 import '@testing-library/jest-dom';
-// import { renderHook } from '@testing-library/react-hooks';
 import { renderHook } from '@testing-library/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useLogin } from './useLogin';
 
-// Mock dependencies
 jest.mock('@tanstack/react-query', () => ({
   useMutation: jest.fn(),
   useQueryClient: jest.fn(),
@@ -31,10 +29,8 @@ describe('useLogin', () => {
   let mockMutate, mockSetQueryData, mockNavigate;
 
   beforeEach(() => {
-    // Reset mocks before each test
     jest.clearAllMocks();
 
-    // Mock useMutation
     mockMutate = jest.fn();
     useMutation.mockImplementation(({ mutationFn }) => ({
       mutate: mockMutate,
@@ -42,13 +38,11 @@ describe('useLogin', () => {
       mutationFn,
     }));
 
-    // Mock useQueryClient
     mockSetQueryData = jest.fn();
     useQueryClient.mockReturnValue({
       setQueryData: mockSetQueryData,
     });
 
-    // Mock useNavigate
     mockNavigate = jest.fn();
     useNavigate.mockReturnValue(mockNavigate);
   });
@@ -59,10 +53,8 @@ describe('useLogin', () => {
     const email = 'badr.redax@gmail.com';
     const password = 'Badre0071@';
 
-    // Trigger the login mutation
     result.current.login({ email, password });
 
-    // Ensure the mutation function is called with the correct arguments
     expect(mockMutate).toHaveBeenCalledWith({ email, password });
   });
 
@@ -71,10 +63,8 @@ describe('useLogin', () => {
 
     const user = { user: { id: 1, email: 'test@example.com' } };
 
-    // Simulate a successful mutation
     useMutation.mock.calls[0][0].onSuccess(user);
 
-    // Ensure the query cache is updated with the user data
     expect(mockSetQueryData).toHaveBeenCalledWith(['user'], user.user);
   });
 
@@ -83,10 +73,8 @@ describe('useLogin', () => {
 
     const user = { user: { id: 1, email: 'test@example.com' } };
 
-    // Simulate a successful mutation
     useMutation.mock.calls[0][0].onSuccess(user);
 
-    // Ensure navigation to /dashboard
     expect(mockNavigate).toHaveBeenCalledWith('/dashboard', { replace: true });
   });
 
@@ -95,10 +83,8 @@ describe('useLogin', () => {
 
     const error = new Error('Login failed');
 
-    // Simulate a failed mutation
     useMutation.mock.calls[0][0].onError(error);
 
-    // Ensure the error toast is displayed
     expect(toast.error).toHaveBeenCalledWith(
       'Provided email or password are incorrect'
     );

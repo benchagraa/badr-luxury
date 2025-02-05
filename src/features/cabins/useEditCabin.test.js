@@ -6,7 +6,6 @@ import { toast } from 'react-hot-toast';
 import { useEditCabin } from './useEditCabin';
 import { createEditCabin } from '../../services/apiCabins';
 
-// Mock dependencies
 jest.mock('@tanstack/react-query', () => ({
   useMutation: jest.fn(),
   useQueryClient: jest.fn(),
@@ -27,10 +26,8 @@ describe('useEditCabin', () => {
   let mockMutate, mockInvalidateQueries;
 
   beforeEach(() => {
-    // Reset mocks before each test
     jest.clearAllMocks();
 
-    // Mock useMutation
     mockMutate = jest.fn();
     useMutation.mockImplementation(({ mutationFn, onSuccess, onError }) => ({
       mutate: mockMutate,
@@ -40,7 +37,6 @@ describe('useEditCabin', () => {
       onError,
     }));
 
-    // Mock useQueryClient
     mockInvalidateQueries = jest.fn();
     useQueryClient.mockReturnValue({
       invalidateQueries: mockInvalidateQueries,
@@ -50,13 +46,10 @@ describe('useEditCabin', () => {
   test('displays a success toast on successful editing', async () => {
     const { result } = renderHook(() => useEditCabin());
 
-    // Simulate a successful mutation
     useMutation.mock.calls[0][0].onSuccess();
 
-    // Trigger the editCabin mutation
     result.current.editCabin({ newCabinData: {}, id: 123 });
 
-    // Wait for the success toast to be displayed
     await waitFor(() => {
       expect(toast.success).toHaveBeenCalledWith('Cabin successfully edited');
     });
@@ -65,13 +58,10 @@ describe('useEditCabin', () => {
   test('invalidates the cabins query cache on success', async () => {
     const { result } = renderHook(() => useEditCabin());
 
-    // Simulate a successful mutation
     useMutation.mock.calls[0][0].onSuccess();
 
-    // Trigger the editCabin mutation
     result.current.editCabin({ newCabinData: {}, id: 123 });
 
-    // Wait for the cabins query cache to be invalidated
     await waitFor(() => {
       expect(mockInvalidateQueries).toHaveBeenCalledWith({
         queryKey: ['cabins'],
@@ -84,13 +74,10 @@ describe('useEditCabin', () => {
 
     const mockError = new Error('Failed to edit cabin');
 
-    // Simulate a failed mutation
     useMutation.mock.calls[0][0].onError(mockError);
 
-    // Trigger the editCabin mutation
     result.current.editCabin({ newCabinData: {}, id: 123 });
 
-    // Wait for the error toast to be displayed
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(mockError.message);
     });

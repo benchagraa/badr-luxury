@@ -4,19 +4,16 @@ import { useLogout } from './useLogout';
 import SpinnerMini from '../../ui/SpinnerMini';
 import { HiArrowRightOnRectangle } from 'react-icons/hi2';
 
-// Mock the useLogout hook
 jest.mock('./useLogout', () => ({
   useLogout: jest.fn(),
 }));
 
-// Mock the SpinnerMini component
 jest.mock('../../ui/SpinnerMini', () => {
   return function SpinnerMini() {
     return <div data-testid="spinner">Loading...</div>;
   };
 });
 
-// Mock the HiArrowRightOnRectangle icon
 jest.mock('react-icons/hi2', () => ({
   HiArrowRightOnRectangle: () => (
     <div data-testid="logout-icon">Logout Icon</div>
@@ -25,7 +22,6 @@ jest.mock('react-icons/hi2', () => ({
 
 describe('Logout', () => {
   beforeEach(() => {
-    // Reset mocks before each test
     useLogout.mockReset();
     useLogout.mockReturnValue({
       logout: jest.fn(),
